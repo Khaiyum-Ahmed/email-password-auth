@@ -1,11 +1,18 @@
 
 const Register = () => {
+    const handleRegister = (e) =>{
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(name,email,password,"Register me in")
+    }
     return (
         <div className="my-12">
             <h2 className="text-4xl font-bold text-center">Register</h2>
 
             <div className="max-w-3xs mx-auto my-8">
-                <form className="space-y-2">
+                <form onSubmit={handleRegister} className="space-y-2">
                     <label className="input validator">
                         <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <g
@@ -22,6 +29,7 @@ const Register = () => {
                         <input
                             type="text"
                             required
+                            name='name'
                             placeholder="Username"
                             pattern="[A-Za-z][A-Za-z0-9\-]*"
                             minlength="3"
@@ -43,7 +51,7 @@ const Register = () => {
                                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                             </g>
                         </svg>
-                        <input type="email" placeholder="mail@site.com" required />
+                        <input type="email" name="email" placeholder="mail@site.com" required />
                     </label>
                     <div className="validator-hint hidden">Enter valid email address</div>
                     <label className="input validator">
@@ -64,6 +72,7 @@ const Register = () => {
                         <input
                             type="password"
                             required
+                            name="password"
                             placeholder="Password"
                             minlength="8"
                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -74,6 +83,7 @@ const Register = () => {
                         Must be more than 8 characters, including
                         <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
                     </p>
+                    <button className="btn btn-wide btn-accent">Login</button>
                 </form>
             </div>
         </div>
