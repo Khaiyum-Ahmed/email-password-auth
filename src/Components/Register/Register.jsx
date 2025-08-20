@@ -1,11 +1,22 @@
 
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import auth from '../../Firebase/Firebase.init'
 const Register = () => {
     const handleRegister = (e) =>{
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name,email,password,"Register me in")
+        console.log(name,email,password,"Register me in");
+
+        // create user with email and password
+        createUserWithEmailAndPassword(auth, email, password)
+        .then(result =>{
+            console.log(result.user)
+        })
+        .catch(error=>{
+            console.log('error', error)
+        })
     }
     return (
         <div className="my-12">
